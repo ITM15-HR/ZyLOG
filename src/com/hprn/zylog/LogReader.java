@@ -72,7 +72,7 @@ public class LogReader {
 			
 		}
 		
-		//System.out.println("Data set(s) received: " + Integer.toString(dsCount));
+		// System.out.println("Data set(s) received: " + Integer.toString(dsCount));
 		
 		return logData;
 	}
@@ -83,7 +83,7 @@ public class LogReader {
 				int no = Integer.parseInt(s.substring(0, 3).trim());
 				logInfo.setNo(no);
 				
-				String dateTimeStr = s.substring(5, 24); 
+				String dateTimeStr = s.substring(5, 24).trim(); 
 				Calendar cal = Calendar.getInstance();
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				try {
@@ -101,9 +101,17 @@ public class LogReader {
 				logInfo.setDestination(destination);
 				break;
 			case 2: 
+				String priority = s.substring(5, 24).trim(); 
+				logInfo.setPriority(priority);
+				
+				String category = s.substring(25, 47).trim();
+				logInfo.setCategory(category);
+				
+				String note = s.substring(48, s.length()-1).trim();
+				logInfo.setNote(note);
 				break;
 			case 3: 
-				logInfo.setNote(s.trim());
+				logInfo.setMessage(s.trim());
 				break;
 		}
 	}

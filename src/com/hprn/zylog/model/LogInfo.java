@@ -13,6 +13,7 @@ public class LogInfo {
 	private String priority;
 	private String category;
 	private String note;
+	private String message;
 	private String dataSource;
 	
 	public LogInfo() {
@@ -69,6 +70,14 @@ public class LogInfo {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	public String getNote() {
